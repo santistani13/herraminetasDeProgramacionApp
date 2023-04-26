@@ -4,7 +4,7 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Agregar Equipo</h1>
 
 <h4>Equipo</h4>
 <hr />
@@ -19,7 +19,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Pais" class="control-label"></label>
-                <input asp-for="Pais" class="form-control" />
+                <input asp-for="Pais" type="text"  class="form-control" />
                 <span asp-validation-for="Pais" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -29,7 +29,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Titulos" class="control-label"></label>
-                <input asp-for="Titulos" class="form-control" />
+                <input asp-for="Titulos" class="form-control" min="0" />
                 <span asp-validation-for="Titulos" class="text-danger"></span>
             </div>
             <div class="form-group">

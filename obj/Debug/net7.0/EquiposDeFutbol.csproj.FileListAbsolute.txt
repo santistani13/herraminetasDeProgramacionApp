@@ -278,4 +278,3 @@ C:\Users\santi\ISTEA\Herramientas de programacion\Parcial 1\EquiposDeFutbol\bin\
 C:\Users\santi\ISTEA\Herramientas de programacion\Parcial 1\EquiposDeFutbol\bin\Debug\net7.0\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\santi\ISTEA\Herramientas de programacion\Parcial 1\EquiposDeFutbol\bin\Debug\net7.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\santi\ISTEA\Herramientas de programacion\Parcial 1\EquiposDeFutbol\bin\Debug\net7.0\runtimes\win-x86\native\e_sqlite3.dll
-C:\Users\santi\ISTEA\Herramientas de programacion\Parcial 1\EquiposDeFutbol\obj\Debug\net7.0\scopedcss\Views\EquiposDeFutbol\Index.cshtml.rz.scp.css

@@ -16,4 +16,5 @@ public class Equipo {
     public int Titulos { get; set; }
     [Display(Name="Titulos")]
     public int CantidadSocios{ get; set; }
+    
 }
