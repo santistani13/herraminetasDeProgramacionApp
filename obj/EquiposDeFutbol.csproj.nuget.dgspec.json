@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\santi\\ISTEA\\Herramientas de programacion\\Parcial 1\\EquiposDeFutbol\\EquiposDeFutbol.csproj": {}
+    "C:\\Users\\santi\\ISTEA\\Herramientas de programacion\\Parcial 1\\herraminetasDeProgramacionApp\\EquiposDeFutbol.csproj": {}
   },
   "projects": {
-    "C:\\Users\\santi\\ISTEA\\Herramientas de programacion\\Parcial 1\\EquiposDeFutbol\\EquiposDeFutbol.csproj": {
+    "C:\\Users\\santi\\ISTEA\\Herramientas de programacion\\Parcial 1\\herraminetasDeProgramacionApp\\EquiposDeFutbol.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\santi\\ISTEA\\Herramientas de programacion\\Parcial 1\\EquiposDeFutbol\\EquiposDeFutbol.csproj",
+        "projectUniqueName": "C:\\Users\\santi\\ISTEA\\Herramientas de programacion\\Parcial 1\\herraminetasDeProgramacionApp\\EquiposDeFutbol.csproj",
         "projectName": "EquiposDeFutbol",
-        "projectPath": "C:\\Users\\santi\\ISTEA\\Herramientas de programacion\\Parcial 1\\EquiposDeFutbol\\EquiposDeFutbol.csproj",
+        "projectPath": "C:\\Users\\santi\\ISTEA\\Herramientas de programacion\\Parcial 1\\herraminetasDeProgramacionApp\\EquiposDeFutbol.csproj",
         "packagesPath": "C:\\Users\\santi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\santi\\ISTEA\\Herramientas de programacion\\Parcial 1\\EquiposDeFutbol\\obj\\",
+        "outputPath": "C:\\Users\\santi\\ISTEA\\Herramientas de programacion\\Parcial 1\\herraminetasDeProgramacionApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\santi\\AppData\\Roaming\\NuGet\\NuGet.Config",

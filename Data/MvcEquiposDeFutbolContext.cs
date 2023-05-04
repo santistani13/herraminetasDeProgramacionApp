@@ -15,5 +15,7 @@ namespace MvcEquiposDeFutbol.Data
         }
 
         public DbSet<EquiposDeFutbol.Models.Equipo> Equipo { get; set; } = default!;
+
+        public DbSet<EquiposDeFutbol.Models.Liga> Liga { get; set; } = default!;
     }
 }

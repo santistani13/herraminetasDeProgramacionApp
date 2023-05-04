@@ -6,7 +6,6 @@
 
 <h1>Agregar Equipo</h1>
 
-<h4>Equipo</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -38,16 +37,16 @@
                 <span asp-validation-for="CantidadSocios" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Crear Equipo" class="btn btn-success" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
+<button type="button" class="btn btn-dark mb-2 mt-2">
+    <a asp-action="Index" class="text-light">Volver al listado</a>
+</button>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
