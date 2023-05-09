@@ -16,7 +16,7 @@
 <div class="d-flex">
     <form method="get" asp-action="Index" asp-controller="EquiposDeFutbol">
         <div class="d-flex">
-        <input type="text" asp-for="NameFilter" class="form-control mt-2 bg-dark text-light"/>
+        <input type="text" placeholder="Filtrar por Nombre o Pais" asp-for="NameFilter" class="form-control mt-2 bg-dark text-light"/>
         <button class="btn btn-dark h-25 mt-2 ml-1" type="submit">Buscar</button>
 
         </div>
@@ -68,7 +68,7 @@
                 @Html.DisplayFor(modelItem => item.CantidadSocios)
             </td>
              <td>
-                @Html.DisplayFor(modelItem => item.LigaId)
+                @Html.DisplayFor(modelItem => item.Liga.Nombre)
             </td>
             <td>
                  <button class="btn btn-outline-secondary">

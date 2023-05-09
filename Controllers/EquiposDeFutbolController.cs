@@ -27,12 +27,12 @@ namespace EquiposDeFutbol.Controllers
 
             if (!string.IsNullOrEmpty(nameFilter))
             {
-                query = query.Where(x => x.Nombre.ToLower().Contains(nameFilter) ||
-                x.Pais.ToLower().Contains(nameFilter)
+                query = query.Where(x => x.Nombre.ToLower().Contains(nameFilter.ToLower()) ||
+                x.Pais.ToLower().Contains(nameFilter.ToLower())
                 );
             }
-
-            var model = new EquiposViewModel();
+            var equipos = _context.Equipo.Include(e => e.Liga).ToList();
+            var model = new EquiposViewModel {Equipos = equipos};
             model.Equipos = await query.ToListAsync();
 
 
