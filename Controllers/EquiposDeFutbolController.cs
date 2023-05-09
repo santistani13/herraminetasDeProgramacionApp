@@ -27,7 +27,9 @@ namespace EquiposDeFutbol.Controllers
 
             if (!string.IsNullOrEmpty(nameFilter))
             {
-                query = query.Where(x => x.Nombre.ToLower().Contains(nameFilter));
+                query = query.Where(x => x.Nombre.ToLower().Contains(nameFilter) ||
+                x.Pais.ToLower().Contains(nameFilter)
+                );
             }
 
             var model = new EquiposViewModel();
