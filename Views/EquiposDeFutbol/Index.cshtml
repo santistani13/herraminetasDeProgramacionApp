@@ -1,4 +1,6 @@
-@model IEnumerable<EquiposDeFutbol.Models.Equipo>
+@using EquiposDeFutbol.ViewModels;
+@model EquiposViewModel;
+
 
 @{
     ViewData["Title"] = "Index";
@@ -12,8 +14,14 @@
     <a asp-action="Create" class="text-light">Agregar equipo</a>
 </button>
 <div class="d-flex">
-    <label class="mt-3 mr-2 font-weight-bold">Buscar:</label>
-    <input type="text" class="form-control mt-2 bg-dark text-light"/>
+    <form method="get" asp-action="Index" asp-controller="EquiposDeFutbol">
+        <div class="d-flex">
+        <input type="text" asp-for="NameFilter" class="form-control mt-2 bg-dark text-light"/>
+        <button class="btn btn-dark h-25 mt-2 ml-1" type="submit">Buscar</button>
+
+        </div>
+    </form>
+    
 </div>
 </div>
 
@@ -21,25 +29,25 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Nombre)
+                @Html.DisplayNameFor(model => model.Equipos[0].Nombre)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Pais)
+                @Html.DisplayNameFor(model => model.Equipos[0].Pais)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AnioFundacion)
+                @Html.DisplayNameFor(model => model.Equipos[0].AnioFundacion)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Titulos)
+                @Html.DisplayNameFor(model => model.Equipos[0].Titulos)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CantidadSocios)
+                @Html.DisplayNameFor(model => model.Equipos[0].CantidadSocios)
             </th>
             <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.Equipos) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Nombre)

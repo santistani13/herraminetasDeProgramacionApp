@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EquiposDeFutbol.Models;
 using MvcEquiposDeFutbol.Data;
+using EquiposDeFutbol.ViewModels;
 
 namespace EquiposDeFutbol.Controllers
 {
@@ -20,11 +21,22 @@ namespace EquiposDeFutbol.Controllers
         }
 
         // GET: EquiposDeFutbol
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string nameFilter)
         {
-              return _context.Equipo != null ? 
-                          View(await _context.Equipo.ToListAsync()) :
-                          Problem("Entity set 'MvcEquiposDeFutbolContext.Equipo'  is null.");
+              var query = from equipo in _context.Equipo select equipo;
+
+            if (!string.IsNullOrEmpty(nameFilter))
+            {
+                query = query.Where(x => x.Nombre.ToLower().Contains(nameFilter));
+            }
+
+            var model = new EquiposViewModel();
+            model.Equipos = await query.ToListAsync();
+
+
+            return _context.Equipo != null ? 
+                          View(model) :
+                          Problem("Entity set 'MenuContext.Equipo'  is null.");
         }
 
         // GET: EquiposDeFutbol/Details/5
