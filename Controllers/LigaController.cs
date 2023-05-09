@@ -71,6 +71,7 @@ namespace EquiposDeFutbol.Controllers
         // GET: Liga/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            
             if (id == null || _context.Liga == null)
             {
                 return NotFound();
@@ -91,10 +92,12 @@ namespace EquiposDeFutbol.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Pais")] Liga liga)
         {
+
             if (id != liga.Id)
             {
                 return NotFound();
             }
+            ModelState.Remove("Equipos");
 
             if (ModelState.IsValid)
             {
