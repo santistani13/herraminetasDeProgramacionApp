@@ -12,4 +12,6 @@ public class Equipo {
     public int Titulos { get; set; }
     public int CantidadSocios{ get; set; }
     
+   public int LigaId { get; set; }
+   public Liga Liga {get; set; }
 }

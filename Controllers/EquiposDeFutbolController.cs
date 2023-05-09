@@ -62,6 +62,7 @@ namespace EquiposDeFutbol.Controllers
         // GET: EquiposDeFutbol/Create
         public IActionResult Create()
         {
+              ViewData["LigaId"] = new SelectList(_context.Liga, "Id", "Nombre");
             return View();
         }
 
@@ -70,14 +71,19 @@ namespace EquiposDeFutbol.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre,Pais,AnioFundacion,Titulos,CantidadSocios")] Equipo equipo)
+        public async Task<IActionResult> Create([Bind("Id,Nombre,Pais,AnioFundacion,Titulos,CantidadSocios,LigaId")] Equipo equipo)
         {
+            ModelState.Remove("Liga");
+
             if (ModelState.IsValid)
             {
                 _context.Add(equipo);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
+
             }
+         ViewData["LigaId"] = new SelectList(_context.Liga, "Id", "Id", equipo.LigaId);
+
             return View(equipo);
         }
 
@@ -94,6 +100,8 @@ namespace EquiposDeFutbol.Controllers
             {
                 return NotFound();
             }
+         ViewData["LigaId"] = new SelectList(_context.Liga, "Id", "Nombre", equipo.LigaId);
+
             return View(equipo);
         }
 
@@ -102,12 +110,13 @@ namespace EquiposDeFutbol.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Pais,AnioFundacion,Titulos,CantidadSocios")] Equipo equipo)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Pais,AnioFundacion,Titulos,CantidadSocios,LigaId")] Equipo equipo)
         {
             if (id != equipo.Id)
             {
                 return NotFound();
             }
+            ModelState.Remove("Liga");
 
             if (ModelState.IsValid)
             {
@@ -129,6 +138,8 @@ namespace EquiposDeFutbol.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+         ViewData["LigaId"] = new SelectList(_context.Liga, "Id", "Nombre", equipo.LigaId);
+
             return View(equipo);
         }
 

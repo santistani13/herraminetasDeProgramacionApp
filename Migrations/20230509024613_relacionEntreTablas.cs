@@ -5,7 +5,7 @@
 namespace EquiposDeFutbol.Migrations
 {
     /// <inheritdoc />
-    public partial class PaisToLiga : Migration
+    public partial class relacionEntreTablas : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

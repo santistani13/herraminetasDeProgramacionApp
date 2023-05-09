@@ -56,8 +56,9 @@ namespace EquiposDeFutbol.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre,Pais")] Liga liga)
+        public async Task<IActionResult> Create([Bind("Id,Nombre,Pais,Equipos")] Liga liga)
         {
+            ModelState.Remove("Equipos");
             if (ModelState.IsValid)
             {
                 _context.Add(liga);

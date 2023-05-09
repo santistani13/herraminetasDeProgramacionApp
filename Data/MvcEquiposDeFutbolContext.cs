@@ -17,5 +17,16 @@ namespace MvcEquiposDeFutbol.Data
         public DbSet<EquiposDeFutbol.Models.Equipo> Equipo { get; set; } = default!;
 
         public DbSet<EquiposDeFutbol.Models.Liga> Liga { get; set; } = default!;
+
+           protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+             modelBuilder.Entity<Equipo>()
+            .HasOne<Liga>(e => e.Liga)
+            .WithMany(l => l.Equipos)
+            .HasForeignKey(e => e.LigaId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        base.OnModelCreating(modelBuilder);
+        }
     }
 }

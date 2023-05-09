@@ -43,6 +43,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Equipos[0].CantidadSocios)
             </th>
+             <th>
+                @Html.DisplayNameFor(model => model.Equipos[0].Liga)
+            </th>
             <th>Acciones</th>
         </tr>
     </thead>
@@ -63,6 +66,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CantidadSocios)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.LigaId)
             </td>
             <td>
                  <button class="btn btn-outline-secondary">

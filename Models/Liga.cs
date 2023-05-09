@@ -10,5 +10,5 @@ public class Liga {
     
     public string Pais { get; set; }
 
-    
+     public List<Equipo> Equipos { get; set; }
 }

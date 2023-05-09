@@ -10,8 +10,8 @@ using MvcEquiposDeFutbol.Data;
 namespace EquiposDeFutbol.Migrations
 {
     [DbContext(typeof(MvcEquiposDeFutbolContext))]
-    [Migration("20230504020255_PaisToLiga")]
-    partial class PaisToLiga
+    [Migration("20230509022019_initialMigration")]
+    partial class initialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,6 +31,9 @@ namespace EquiposDeFutbol.Migrations
                     b.Property<int>("CantidadSocios")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("LigaId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -43,6 +46,8 @@ namespace EquiposDeFutbol.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("LigaId");
 
                     b.ToTable("Equipo");
                 });
@@ -64,6 +69,17 @@ namespace EquiposDeFutbol.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Liga");
+                });
+
+            modelBuilder.Entity("EquiposDeFutbol.Models.Equipo", b =>
+                {
+                    b.HasOne("EquiposDeFutbol.Models.Liga", "Liga")
+                        .WithMany()
+                        .HasForeignKey("LigaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Liga");
                 });
 #pragma warning restore 612, 618
         }

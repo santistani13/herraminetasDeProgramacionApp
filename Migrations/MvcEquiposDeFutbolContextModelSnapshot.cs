@@ -28,6 +28,9 @@ namespace EquiposDeFutbol.Migrations
                     b.Property<int>("CantidadSocios")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("LigaId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -41,7 +44,9 @@ namespace EquiposDeFutbol.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Equipo");
+                    b.HasIndex("LigaId");
+
+                    b.ToTable("Equipo", (string)null);
                 });
 
             modelBuilder.Entity("EquiposDeFutbol.Models.Liga", b =>
@@ -60,7 +65,23 @@ namespace EquiposDeFutbol.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Liga");
+                    b.ToTable("Liga", (string)null);
+                });
+
+            modelBuilder.Entity("EquiposDeFutbol.Models.Equipo", b =>
+                {
+                    b.HasOne("EquiposDeFutbol.Models.Liga", "Liga")
+                        .WithMany("Equipos")
+                        .HasForeignKey("LigaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Liga");
+                });
+
+            modelBuilder.Entity("EquiposDeFutbol.Models.Liga", b =>
+                {
+                    b.Navigation("Equipos");
                 });
 #pragma warning restore 612, 618
         }
