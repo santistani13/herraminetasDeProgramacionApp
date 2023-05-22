@@ -29,7 +29,7 @@ Para correr la aplicacion se puede correr con el comando dotnet run, o si se van
 dotnet run
 dotnet watch
 ```
-## Built With <img src='(https://github.com/santistani13/herraminetasDeProgramacionApp/assets/76953005/41001393-375f-4bb8-bbea-c49f45233b28' width='25'>
+## Built With <img src='https://github.com/santistani13/herraminetasDeProgramacionApp/assets/76953005/41001393-375f-4bb8-bbea-c49f45233b28' width='25'>
 
 * https://dotnet.microsoft.com/en-us/ - Dotnet
 * https://learn.microsoft.com/en-us/ef/ - entity framework
