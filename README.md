@@ -1,7 +1,8 @@
 # herraminetasDeProgramacionApp
 app para herramientas de programacion
 
-# Equipos de futbol
+# Equipos de futbol <img src='![image](https://github.com/santistani13/herraminetasDeProgramacionApp/assets/76953005/8a34e328-9a16-4d9c-a316-ba55222b6bd6)
+' width='25'>
 
 Aplicacion corrida en dotnet, que se basa en dos tablas donde una estan los equipos de futbol a nivel mundial y otra tabla las ligas del mundo adonde estos equipos pertenecen. Existe una relacion entre ambas tablas con la liga misma del equipo.
 
