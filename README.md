@@ -25,6 +25,7 @@ Los dos primeros comandos la instalacion es de manera global, y los otros 4 son 
 ### Running the app! <img src='https://github.com/santistani13/herraminetasDeProgramacionApp/assets/76953005/18cac3e0-c101-4641-8004-4839e0337a56' width='25'>
 
 Para correr la aplicacion se puede correr con el comando dotnet run, o si se van a hacer cambios no criticos en el codigo se puede utilizar el comando dotnet watch para que actualice estos mismos automanticamente.
+Si estos cambios son criticos, se debe bajar la aplicacion y volverla a levantar con cualquiera de estos dos comandos.
 ```
 dotnet run
 dotnet watch
