@@ -5,7 +5,7 @@ app para herramientas de programacion
 
 Aplicacion corrida en dotnet, que se basa en dos tablas donde una estan los equipos de futbol a nivel mundial y otra tabla las ligas del mundo adonde estos equipos pertenecen. Existe una relacion entre ambas tablas con la liga misma del equipo.
 
-## Pre requisites e instalaciones ![alt text]
+## Pre requisites e instalaciones 
 
 
 Se necesita instalar dotnet, y entity framework. A continuacion los comandos para todas las instalaciones 
