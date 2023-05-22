@@ -1,4 +1,4 @@
-# herraminetasDeProgramacionApp <img src='https://github.com/santistani13/herraminetasDeProgramacionApp/assets/76953005/18cac3e0-c101-4641-8004-4839e0337a56' width='25'>
+# herraminetasDeProgramacionApp 
 app para herramientas de programacion
 
 # Equipos de futbol <img src='https://github.com/santistani13/herraminetasDeProgramacionApp/assets/76953005/3f6913f3-cc9e-4c1a-8f3f-a7f1b896167b' width='25'>
@@ -22,7 +22,7 @@ dotnet add package Microsoft.EntityFrameworkCore.Tools
 ```
 Los dos primeros comandos la instalacion es de manera global, y los otros 4 son de manera local en el proyecto.
 
-### Running the app!
+### Running the app! <img src='https://github.com/santistani13/herraminetasDeProgramacionApp/assets/76953005/18cac3e0-c101-4641-8004-4839e0337a56' width='25'>
 
 Para correr la aplicacion se puede correr con el comando dotnet run, o si se van a hacer cambios no criticos en el codigo se puede utilizar el comando dotnet watch para que actualice estos mismos automanticamente.
 --
