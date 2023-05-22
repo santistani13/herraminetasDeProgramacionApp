@@ -1,11 +1,11 @@
-# herraminetasDeProgramacionApp
+# herraminetasDeProgramacionApp <img src='https://github.com/santistani13/herraminetasDeProgramacionApp/assets/76953005/18cac3e0-c101-4641-8004-4839e0337a56' width='25'>
 app para herramientas de programacion
 
 # Equipos de futbol <img src='https://github.com/santistani13/herraminetasDeProgramacionApp/assets/76953005/3f6913f3-cc9e-4c1a-8f3f-a7f1b896167b' width='25'>
 
 Aplicacion corrida en dotnet, que se basa en dos tablas donde una estan los equipos de futbol a nivel mundial y otra tabla las ligas del mundo adonde estos equipos pertenecen. Existe una relacion entre ambas tablas con la liga misma del equipo.
 
-## Pre requisites e instalaciones <img src='https://github.com/santistani13/herraminetasDeProgramacionApp/assets/76953005/18cac3e0-c101-4641-8004-4839e0337a56' width='25'>
+## Pre requisites e instalaciones <img src='https://github.com/santistani13/herraminetasDeProgramacionApp/assets/76953005/b30bdcb6-7807-49a4-8eb6-1509f7ab596d' width='25'>
 
 
 
