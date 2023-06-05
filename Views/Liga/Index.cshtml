@@ -1,4 +1,5 @@
-@model IEnumerable<EquiposDeFutbol.Models.Liga>
+@using EquiposDeFutbol.ViewModels;
+@model LigaViewModel;
 
 @{
     ViewData["Title"] = "Index";
@@ -7,23 +8,35 @@
 <h1 class="font-weight-bold">Ligas</h1>
 
 
+<div class="d-flex justify-content-between">
 <button type="button" class="btn btn-dark mb-2 mt-2">
     <a asp-action="Create" class="text-light">Agregar Liga</a>
 </button>
+<div class="d-flex">
+    <form method="get" asp-action="Index" asp-controller="Liga">
+        <div class="d-flex">
+        <input type="text" placeholder="Filtrar por Nombre o Pais" asp-for="NameFilter" class="form-control mt-2 bg-dark text-light"/>
+        <button class="btn btn-dark h-25 mt-2 ml-1" type="submit">Buscar</button>
+
+        </div>
+    </form>
+    
+</div>
+</div>
 <table class="table table-dark">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Nombre)
+                @Html.DisplayNameFor(model => model.Ligas[0].Nombre)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Pais)
+                @Html.DisplayNameFor(model => model.Ligas[0].Pais)
             </th>
             <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.Ligas) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Nombre)

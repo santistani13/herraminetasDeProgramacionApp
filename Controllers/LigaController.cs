@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EquiposDeFutbol.Models;
 using MvcEquiposDeFutbol.Data;
+using EquiposDeFutbol.ViewModels;
 
 namespace EquiposDeFutbol.Controllers
 {
@@ -20,11 +21,28 @@ namespace EquiposDeFutbol.Controllers
         }
 
         // GET: Liga
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string nameFilter)
         {
-              return _context.Liga != null ? 
-                          View(await _context.Liga.ToListAsync()) :
-                          Problem("Entity set 'MvcEquiposDeFutbolContext.Liga'  is null.");
+            //   return _context.Liga != null ? 
+            //               View(await _context.Liga.ToListAsync()) :
+            //               Problem("Entity set 'MvcEquiposDeFutbolContext.Liga'  is null.");
+
+             var query = from liga in _context.Liga select liga;
+
+            if (!string.IsNullOrEmpty(nameFilter))
+            {
+                query = query.Where(x => x.Nombre.ToLower().Contains(nameFilter.ToLower()) ||
+                x.Pais.ToLower().Contains(nameFilter.ToLower())
+                );
+            }
+            var ligas = _context.Liga.Include(e => e.Equipos).ToList();
+            var model = new LigaViewModel {Ligas = ligas};
+            model.Ligas = await query.ToListAsync();
+
+
+            return _context.Liga != null ? 
+                          View(model) :
+                          Problem("Entity set 'MenuContext.Liga'  is null.");
         }
 
         // GET: Liga/Details/5
