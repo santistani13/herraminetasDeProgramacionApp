@@ -14,4 +14,5 @@ public class Equipo {
     
    public int LigaId { get; set; }
    public Liga Liga {get; set; }
+   public virtual List<Jugador> Jugadores { get; set; }
 }

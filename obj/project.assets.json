@@ -10085,11 +10085,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\santi\\ISTEA\\Herramientas de programacion\\Parcial 1\\herraminetasDeProgramacionApp\\EquiposDeFutbol.csproj",
+      "projectUniqueName": "C:\\Users\\santi\\ISTEA\\Herramientas de programacion\\herraminetasDeProgramacionApp\\EquiposDeFutbol.csproj",
       "projectName": "EquiposDeFutbol",
-      "projectPath": "C:\\Users\\santi\\ISTEA\\Herramientas de programacion\\Parcial 1\\herraminetasDeProgramacionApp\\EquiposDeFutbol.csproj",
+      "projectPath": "C:\\Users\\santi\\ISTEA\\Herramientas de programacion\\herraminetasDeProgramacionApp\\EquiposDeFutbol.csproj",
       "packagesPath": "C:\\Users\\santi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\santi\\ISTEA\\Herramientas de programacion\\Parcial 1\\herraminetasDeProgramacionApp\\obj\\",
+      "outputPath": "C:\\Users\\santi\\ISTEA\\Herramientas de programacion\\herraminetasDeProgramacionApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\santi\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -74,6 +74,7 @@ namespace EquiposDeFutbol.Controllers
         public async Task<IActionResult> Create([Bind("Id,Nombre,Pais,AnioFundacion,Titulos,CantidadSocios,LigaId")] Equipo equipo)
         {
             ModelState.Remove("Liga");
+            ModelState.Remove("Jugadores");
 
             if (ModelState.IsValid)
             {
@@ -117,6 +118,8 @@ namespace EquiposDeFutbol.Controllers
                 return NotFound();
             }
             ModelState.Remove("Liga");
+            ModelState.Remove("Jugadores");
+
 
             if (ModelState.IsValid)
             {

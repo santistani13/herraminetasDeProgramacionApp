@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xBRRUfV4pp4VGCfMEAieAVoGaeHU4DJVqeY5hbhcbuypbXyfOCmBO3UE4CpXnQzviNaQMf7K6YfhIOdOfQj8/A==",
+  "dgSpecHash": "QYkN354wB7e18ll5YZ2pjTYpogLve/63/Kde0sUY0Bacj4zbdKSDZukOiXSTYJ8juYrfBIASATaCIqj+3GTRKQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\santi\\ISTEA\\Herramientas de programacion\\Parcial 1\\herraminetasDeProgramacionApp\\EquiposDeFutbol.csproj",
+  "projectFilePath": "C:\\Users\\santi\\ISTEA\\Herramientas de programacion\\herraminetasDeProgramacionApp\\EquiposDeFutbol.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\santi\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\santi\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\6.0.11\\microsoft.aspnetcore.razor.language.6.0.11.nupkg.sha512",
