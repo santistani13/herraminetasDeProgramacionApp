@@ -1,3 +1,4 @@
+using EquiposDeFutbol.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using MvcEquiposDeFutbol.Data;
@@ -7,6 +8,10 @@ builder.Services.AddDbContext<MvcEquiposDeFutbolContext>(options =>
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<IEquipoService, EquipoService>();
+builder.Services.AddScoped<ILigaService, LigaService>();
+
 
 var app = builder.Build();
 

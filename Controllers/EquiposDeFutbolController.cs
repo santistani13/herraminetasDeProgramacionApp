@@ -8,49 +8,39 @@ using Microsoft.EntityFrameworkCore;
 using EquiposDeFutbol.Models;
 using MvcEquiposDeFutbol.Data;
 using EquiposDeFutbol.ViewModels;
+using EquiposDeFutbol.Services;
 
 namespace EquiposDeFutbol.Controllers
 {
     public class EquiposDeFutbolController : Controller
     {
-        private readonly MvcEquiposDeFutbolContext _context;
-
-        public EquiposDeFutbolController(MvcEquiposDeFutbolContext context)
+        private IEquipoService _EquipoService;
+        private ILigaService _LigaService;
+        public EquiposDeFutbolController(IEquipoService equipoService, ILigaService ligaService)
         {
-            _context = context;
+            _EquipoService = equipoService;
+            _LigaService = ligaService;
         }
 
         // GET: EquiposDeFutbol
-        public async Task<IActionResult> Index(string nameFilter)
+        public  IActionResult Index(string nameFilter)
         {
-              var query = from equipo in _context.Equipo select equipo;
-
-            if (!string.IsNullOrEmpty(nameFilter))
-            {
-                query = query.Where(x => x.Nombre.ToLower().Contains(nameFilter.ToLower()) ||
-                x.Pais.ToLower().Contains(nameFilter.ToLower())
-                );
-            }
-            var equipos = _context.Equipo.Include(e => e.Liga).ToList();
+          
+            var equipos = _EquipoService.GetAll(nameFilter);
             var model = new EquiposViewModel {Equipos = equipos};
-            model.Equipos = await query.ToListAsync();
-
-
-            return _context.Equipo != null ? 
-                          View(model) :
-                          Problem("Entity set 'MenuContext.Equipo'  is null.");
+            return View(model);
+                          
         }
 
         // GET: EquiposDeFutbol/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Equipo == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var equipo = await _context.Equipo
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var equipo = _EquipoService.GetById(id.Value);
             if (equipo == null)
             {
                 return NotFound();
@@ -62,7 +52,8 @@ namespace EquiposDeFutbol.Controllers
         // GET: EquiposDeFutbol/Create
         public IActionResult Create()
         {
-              ViewData["LigaId"] = new SelectList(_context.Liga, "Id", "Nombre");
+            var ligaList = _LigaService.GetAll();
+              ViewData["LigaId"] = new SelectList(ligaList, "Id", "Nombre");
             return View();
         }
 
@@ -78,12 +69,13 @@ namespace EquiposDeFutbol.Controllers
 
             if (ModelState.IsValid)
             {
-                _context.Add(equipo);
-                await _context.SaveChangesAsync();
+               _EquipoService.Create(equipo);
                 return RedirectToAction(nameof(Index));
 
+
             }
-         ViewData["LigaId"] = new SelectList(_context.Liga, "Id", "Id", equipo.LigaId);
+            var ligaList = _LigaService.GetAll();
+         ViewData["LigaId"] = new SelectList(ligaList, "Id", "Id", equipo.LigaId);
 
             return View(equipo);
         }
@@ -91,17 +83,19 @@ namespace EquiposDeFutbol.Controllers
         // GET: EquiposDeFutbol/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Equipo == null)
+            if (id == null )
             {
                 return NotFound();
             }
 
-            var equipo = await _context.Equipo.FindAsync(id);
+            var equipo = _EquipoService.GetById(id.Value);
             if (equipo == null)
             {
                 return NotFound();
             }
-         ViewData["LigaId"] = new SelectList(_context.Liga, "Id", "Nombre", equipo.LigaId);
+            var ligaList = _LigaService.GetAll();
+            ViewData["LigaId"] = new SelectList(ligaList, "Id", "Nombre");
+
 
             return View(equipo);
         }
@@ -125,8 +119,7 @@ namespace EquiposDeFutbol.Controllers
             {
                 try
                 {
-                    _context.Update(equipo);
-                    await _context.SaveChangesAsync();
+                    _EquipoService.Update(equipo);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -141,21 +134,20 @@ namespace EquiposDeFutbol.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-         ViewData["LigaId"] = new SelectList(_context.Liga, "Id", "Nombre", equipo.LigaId);
-
+            var ligaList = _LigaService.GetAll();
+            ViewData["LigaId"] = new SelectList(ligaList, "Id", "Nombre");
             return View(equipo);
         }
 
         // GET: EquiposDeFutbol/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Equipo == null)
+            if (id == null )
             {
                 return NotFound();
             }
 
-            var equipo = await _context.Equipo
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var equipo = _EquipoService.GetById(id.Value);
             if (equipo == null)
             {
                 return NotFound();
@@ -169,23 +161,14 @@ namespace EquiposDeFutbol.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Equipo == null)
-            {
-                return Problem("Entity set 'MvcEquiposDeFutbolContext.Equipo'  is null.");
-            }
-            var equipo = await _context.Equipo.FindAsync(id);
-            if (equipo != null)
-            {
-                _context.Equipo.Remove(equipo);
-            }
-            
-            await _context.SaveChangesAsync();
+           
+            _EquipoService.Delete(id);
             return RedirectToAction(nameof(Index));
         }
 
         private bool EquipoExists(int id)
         {
-          return (_context.Equipo?.Any(e => e.Id == id)).GetValueOrDefault();
+          return  _EquipoService.GetById(id) != null;
         }
     }
 }
