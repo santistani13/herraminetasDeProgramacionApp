@@ -8,53 +8,38 @@ using Microsoft.EntityFrameworkCore;
 using EquiposDeFutbol.Models;
 using MvcEquiposDeFutbol.Data;
 using EquiposDeFutbol.ViewModels;
+using EquiposDeFutbol.Services;
 
 namespace EquiposDeFutbol.Controllers
 {
     public class LigaController : Controller
     {
-        private readonly MvcEquiposDeFutbolContext _context;
+        private ILigaService _LigaService;
 
-        public LigaController(MvcEquiposDeFutbolContext context)
+        public LigaController(ILigaService ligaService)
         {
-            _context = context;
+            _LigaService = ligaService;
+            
         }
 
         // GET: Liga
         public async Task<IActionResult> Index(string nameFilter)
         {
-            //   return _context.Liga != null ? 
-            //               View(await _context.Liga.ToListAsync()) :
-            //               Problem("Entity set 'MvcEquiposDeFutbolContext.Liga'  is null.");
-
-             var query = from liga in _context.Liga select liga;
-
-            if (!string.IsNullOrEmpty(nameFilter))
-            {
-                query = query.Where(x => x.Nombre.ToLower().Contains(nameFilter.ToLower()) ||
-                x.Pais.ToLower().Contains(nameFilter.ToLower())
-                );
-            }
-            var ligas = _context.Liga.Include(e => e.Equipos).ToList();
+          
+           var ligas = _LigaService.GetAll(nameFilter);
             var model = new LigaViewModel {Ligas = ligas};
-            model.Ligas = await query.ToListAsync();
-
-
-            return _context.Liga != null ? 
-                          View(model) :
-                          Problem("Entity set 'MenuContext.Liga'  is null.");
+            return View(model);
         }
 
         // GET: Liga/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Liga == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var liga = await _context.Liga
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var liga = _LigaService.GetById(id.Value);
             if (liga == null)
             {
                 return NotFound();
@@ -79,8 +64,7 @@ namespace EquiposDeFutbol.Controllers
             ModelState.Remove("Equipos");
             if (ModelState.IsValid)
             {
-                _context.Add(liga);
-                await _context.SaveChangesAsync();
+                _LigaService.Create(liga);
                 return RedirectToAction(nameof(Index));
             }
             return View(liga);
@@ -90,12 +74,12 @@ namespace EquiposDeFutbol.Controllers
         public async Task<IActionResult> Edit(int? id)
         {
             
-            if (id == null || _context.Liga == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var liga = await _context.Liga.FindAsync(id);
+            var liga = _LigaService.GetById(id.Value);
             if (liga == null)
             {
                 return NotFound();
@@ -121,8 +105,8 @@ namespace EquiposDeFutbol.Controllers
             {
                 try
                 {
-                    _context.Update(liga);
-                    await _context.SaveChangesAsync();
+                    _LigaService.Update(liga);
+
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -143,13 +127,12 @@ namespace EquiposDeFutbol.Controllers
         // GET: Liga/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Liga == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var liga = await _context.Liga
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var liga = _LigaService.GetById(id.Value);
             if (liga == null)
             {
                 return NotFound();
@@ -163,23 +146,14 @@ namespace EquiposDeFutbol.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Liga == null)
-            {
-                return Problem("Entity set 'MvcEquiposDeFutbolContext.Liga'  is null.");
-            }
-            var liga = await _context.Liga.FindAsync(id);
-            if (liga != null)
-            {
-                _context.Liga.Remove(liga);
-            }
-            
-            await _context.SaveChangesAsync();
+           
+            _LigaService.Delete(id);
             return RedirectToAction(nameof(Index));
         }
 
         private bool LigaExists(int id)
         {
-          return (_context.Liga?.Any(e => e.Id == id)).GetValueOrDefault();
+          return  _LigaService.GetById(id) != null;
         }
     }
 }
