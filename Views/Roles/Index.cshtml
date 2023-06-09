@@ -2,10 +2,16 @@
 @model List<IdentityRole> 
 
 <h3>Roles</h3>
-
-<ul>
+<div class="d-flex justify-content-between mt-2">
+    <ul>
 @foreach (var item in Model)
 {
     <li>@item.Name</li>
 }
 </ul>
+    <button type="button" class="btn btn-dark mb-2 mt-2">
+    <a asp-action="Create" class="text-light">Agregar Rol</a>
+</button>
+
+</div>
+ 
