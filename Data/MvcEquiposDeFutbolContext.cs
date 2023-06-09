@@ -4,10 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using EquiposDeFutbol.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace MvcEquiposDeFutbol.Data
 {
-    public class MvcEquiposDeFutbolContext : DbContext
+    public class MvcEquiposDeFutbolContext : IdentityDbContext
     {
         public MvcEquiposDeFutbolContext (DbContextOptions<MvcEquiposDeFutbolContext> options)
             : base(options)

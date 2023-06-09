@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MvcEquiposDeFutbol.Data;
 
@@ -10,9 +11,11 @@ using MvcEquiposDeFutbol.Data;
 namespace EquiposDeFutbol.Migrations
 {
     [DbContext(typeof(MvcEquiposDeFutbolContext))]
-    partial class MvcEquiposDeFutbolContextModelSnapshot : ModelSnapshot
+    [Migration("20230609022857_addIdentity")]
+    partial class addIdentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.5");

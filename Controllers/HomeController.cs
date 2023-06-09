@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using EquiposDeFutbol.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EquiposDeFutbol.Controllers;
 
@@ -17,7 +18,6 @@ public class HomeController : Controller
     {
         return View();
     }
-
     public IActionResult Privacy()
     {
         return View();

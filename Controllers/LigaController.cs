@@ -9,9 +9,11 @@ using EquiposDeFutbol.Models;
 using MvcEquiposDeFutbol.Data;
 using EquiposDeFutbol.ViewModels;
 using EquiposDeFutbol.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EquiposDeFutbol.Controllers
 {
+    [Authorize]
     public class LigaController : Controller
     {
         private ILigaService _LigaService;
