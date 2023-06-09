@@ -10,9 +10,13 @@
 
 
 <div class="d-flex justify-content-between">
-<button type="button" class="btn btn-dark mb-2 mt-2">
-    <a asp-action="Create" class="text-light">Agregar equipo</a>
-</button>
+    @if (User.Identity != null && User.IsInRole("Administrador"))
+    {
+        <button type="button" class="btn btn-dark mb-2 mt-2">
+            <a asp-action="Create" class="text-light">Agregar equipo</a>
+        </button>
+    }
+
 <div class="d-flex">
     <form method="get" asp-action="Index" asp-controller="EquiposDeFutbol">
         <div class="d-flex">
@@ -24,10 +28,10 @@
     
 </div>
 </div>
-
-<table class="table table-dark">
+<div style="overflow-y:auto !important; max-height:600px !important;">
+<table class="table table-dark" style="position: relative;">
     <thead>
-        <tr>
+        <tr style="position:sticky; top:0;">
             <th>
                 @Html.DisplayNameFor(model => model.Equipos[0].Nombre)
             </th>
@@ -71,17 +75,26 @@
                 @Html.DisplayFor(modelItem => item.Liga.Nombre)
             </td>
             <td>
-                 <button class="btn btn-outline-secondary">
+                @if (User.Identity != null && User.IsInRole("Administrador"))
+                {
+                    <button class="btn btn-outline-secondary">
                     <a asp-action="Edit" asp-route-id="@item.Id" class="text-light">Editar</a> </button> 
+                }
                 <button class="btn btn-outline-secondary ml-2">
                     <a  asp-action="Details" asp-route-id="@item.Id" class="text-light"> Detalle Equipo</a>
                    
                     </button> 
-                <button class="btn btn-outline-secondary ml-2">
-                    <a  asp-action="Delete" asp-route-id="@item.Id" class="text-light">Borrar</a>
-                    </button>
+                @if (User.Identity != null && User.IsInRole("Administrador"))
+                    {
+                         <button class="btn btn-outline-secondary ml-2">
+                         <a  asp-action="Delete" asp-route-id="@item.Id" class="text-light">Borrar</a>
+                        </button>
+                    }
+               
             </td>
         </tr>
 }
     </tbody>
 </table>
+</div>
+

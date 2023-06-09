@@ -24,10 +24,13 @@
     </dl>
 </div>
 <div>
-    <button class="btn btn-dark">
-    <a asp-action="Edit" asp-route-id="@Model?.Id" class="text-light">Editar</a> 
-
-    </button> |
+    @if (User.Identity != null && User.IsInRole("Administrador"))
+        {
+        <button class="btn btn-dark">
+            <a asp-action="Edit" asp-route-id="@Model?.Id" class="text-light">Editar</a> 
+         </button>
+        }
+    
     <button class="btn btn-dark">
     <a asp-action="Index" class="text-light">Back to List</a>
     </button>
