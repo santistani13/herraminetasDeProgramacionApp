@@ -38,7 +38,7 @@ public class LigaService : ILigaService
                 x.Pais.ToLower().Contains(nameFilter.ToLower())
                 );
             }
-            return _context.Liga.Include(e => e.Equipos).ToList();
+            return query.Include(e => e.Equipos).ToList();
     }
  public List<Liga> GetAll()
     {
