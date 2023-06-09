@@ -24,7 +24,7 @@
     </dl>
 </div>
 <div>
-    @if (User.Identity != null && User.IsInRole("Administrador"))
+    @if (User.Identity != null &&(User.IsInRole("Administrador") || User.IsInRole("AdministradorJunior")))
         {
         <button class="btn btn-dark">
             <a asp-action="Edit" asp-route-id="@Model?.Id" class="text-light">Editar</a> 
