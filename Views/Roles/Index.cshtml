@@ -1,12 +1,12 @@
 @using Microsoft.AspNetCore.Identity
 @model List<IdentityRole> 
 
-<h3>Roles</h3>
+<h3>Roles Creados</h3>
 <div class="d-flex justify-content-between mt-2">
     <ul>
 @foreach (var item in Model)
 {
-    <li>@item.Name</li>
+    <li class="font-weight-bold">@item.Name</li>
 }
 </ul>
     <button type="button" class="btn btn-dark mb-2 mt-2">
