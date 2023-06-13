@@ -32,7 +32,6 @@ namespace EquiposDeFutbol.Controllers
         {
 
             var query = from jugador in _context.Jugador select jugador;
-            // var context = _context.Jugador.Include(r => r.Equipos);
             var jugadores = query.Include(e => e.Equipos).ToList();
 
             var model = new JugadorViewModel {Jugadores = jugadores};
@@ -95,17 +94,26 @@ namespace EquiposDeFutbol.Controllers
         // GET: Jugador/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Jugador == null)
-            {
-                return NotFound();
-            }
+            
+          var jugador = _context.Jugador.Include(e => e.Equipos).FirstOrDefault(j => j.JugadorId == id);
+    if (jugador == null)
+    {
+        return NotFound();
+    }
 
-            var jugador = await _context.Jugador.FindAsync(id);
-            if (jugador == null)
-            {
-                return NotFound();
-            }
-            return View(jugador);
+    // Mapear el jugador a la vista modelo
+    var model = new JugadorViewModel
+    {
+        Id = jugador.JugadorId,
+        Name = jugador.Nombre,
+        EquiposIds = jugador.Equipos.Select(e => e.Id).ToList(),
+        // Otras propiedades del modelo que sean necesarias
+    };
+
+    // Pasar el modelo a la vista de edición
+      var equipos = _EquipoService.GetAll();
+            ViewData["Equipos"] = equipos;
+    return View(model);
         }
 
         // POST: Jugador/Edit/5
@@ -113,34 +121,50 @@ namespace EquiposDeFutbol.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("JugadorId,Nombre")] Jugador jugador)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Nacionalidad,Edad,EquiposIds")] JugadorViewModel jugadorView)
         {
-            if (id != jugador.JugadorId)
+            if (id != jugadorView.Id)
+    {
+        return NotFound();
+    }
+
+    if (ModelState.IsValid)
+    {
+        try
+        {
+            // Obtener el jugador existente de la base de datos
+            var jugador = _context.Jugador.Include(e => e.Equipos).FirstOrDefault(j => j.JugadorId == id);
+            if (jugador == null)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            // Actualizar las propiedades del jugador existente con los valores del modelo
+            jugador.Nombre = jugadorView.Name;
+            // Actualizar la lista de equipos del jugador
+            var equipos_ = _context.Equipo.Where(e => jugadorView.EquiposIds.Contains(e.Id)).ToList();
+            jugador.Equipos = equipos_;
+
+            _context.Update(jugador);
+            await _context.SaveChangesAsync();
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            if (!JugadorExists(jugadorView.Id))
             {
-                try
-                {
-                    _context.Update(jugador);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!JugadorExists(jugador.JugadorId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                return NotFound();
             }
-            return View(jugador);
+            else
+            {
+                throw;
+            }
+        }
+        return RedirectToAction(nameof(Index));
+    }
+
+    var equipos = _EquipoService.GetAll();
+    ViewData["Equipos"] = equipos;
+    return View(jugadorView);
         }
 
         // GET: Jugador/Delete/5
