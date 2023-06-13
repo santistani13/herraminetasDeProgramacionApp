@@ -73,7 +73,7 @@ namespace EquiposDeFutbol.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Nacionalidad,Edad,EquiposIds")] JugadorViewModel jugadorView)
+        public async Task<IActionResult> Create([Bind("Id,Name,EquiposIds")] JugadorViewModel jugadorView)
         {
             if (ModelState.IsValid)
             {
@@ -101,16 +101,13 @@ namespace EquiposDeFutbol.Controllers
         return NotFound();
     }
 
-    // Mapear el jugador a la vista modelo
     var model = new JugadorViewModel
     {
         Id = jugador.JugadorId,
         Name = jugador.Nombre,
         EquiposIds = jugador.Equipos.Select(e => e.Id).ToList(),
-        // Otras propiedades del modelo que sean necesarias
     };
 
-    // Pasar el modelo a la vista de edición
       var equipos = _EquipoService.GetAll();
             ViewData["Equipos"] = equipos;
     return View(model);
@@ -121,7 +118,7 @@ namespace EquiposDeFutbol.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Nacionalidad,Edad,EquiposIds")] JugadorViewModel jugadorView)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,EquiposIds")] JugadorViewModel jugadorView)
         {
             if (id != jugadorView.Id)
     {
@@ -132,16 +129,12 @@ namespace EquiposDeFutbol.Controllers
     {
         try
         {
-            // Obtener el jugador existente de la base de datos
             var jugador = _context.Jugador.Include(e => e.Equipos).FirstOrDefault(j => j.JugadorId == id);
             if (jugador == null)
             {
                 return NotFound();
             }
-
-            // Actualizar las propiedades del jugador existente con los valores del modelo
             jugador.Nombre = jugadorView.Name;
-            // Actualizar la lista de equipos del jugador
             var equipos_ = _context.Equipo.Where(e => jugadorView.EquiposIds.Contains(e.Id)).ToList();
             jugador.Equipos = equipos_;
 

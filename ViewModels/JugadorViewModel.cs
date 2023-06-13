@@ -11,7 +11,7 @@ public class JugadorViewModel {
 
     public string Name { get; set; }
 
-    public string Nacionalidad { get; set; }
+    public string? Nacionalidad { get; set; }
 
     public int Edad { get; set; }
     public List<int> EquiposIds { get; set; }

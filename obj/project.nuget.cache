@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HAkNYHKPv01/y2TBAQiNu/2W8dw1X7fLRwHUdZsVEonX0FZREIHrAeCoFtE04gJrV1R5vsKXYHRpH7d1pJGh8Q==",
+  "dgSpecHash": "/BvDUhnsnpeEI1zgcsLXO/bvtFsgVGFoCFuKDEB9Kl1lF2XZFOMfoLqnlXay6tVnNjh3iK6xEzQD7r5UDi5deQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\santi\\ISTEA\\Herramientas de programacion\\herraminetasDeProgramacionApp\\EquiposDeFutbol.csproj",
+  "projectFilePath": "C:\\Users\\santi\\ISTEA\\Herramientas de programacion\\herramientas-de-programacion\\herraminetasDeProgramacionApp\\EquiposDeFutbol.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\santi\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\santi\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\7.0.5\\microsoft.aspnetcore.cryptography.internal.7.0.5.nupkg.sha512",
