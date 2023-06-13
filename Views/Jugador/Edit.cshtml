@@ -31,13 +31,13 @@
                 <input asp-for="Edad" class="form-control" value=""/>
                 <span asp-validation-for="Edad" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="overflow-y:auto !important; max-height:200px !important;">
                 <label asp-for="EquiposIds" class="control-label">Equipos</label>
                 @if (equipoList != null && equipoList.Count > 0)
                 {
                     foreach (var equipo in equipoList)
                     {
-                        <div class="form-check">
+                        <div class="form-check ml-1">
                             <input class="form-check-input" type="checkbox" @(Model.EquiposIds.Contains(equipo.Id) ? "checked" : "") id="Equipo_@equipo.Id" name="EquiposIds" value="@equipo.Id">
                             <label class="form-check-label" for="Equipo_@equipo.Id">
                                 @equipo.Nombre
@@ -51,14 +51,14 @@
                 }
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Guardar" class="btn btn-dark" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="text-dark cursor-pointer">Volver</a>
 </div>
 
 @section Scripts {

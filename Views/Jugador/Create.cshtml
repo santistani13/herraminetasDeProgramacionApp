@@ -5,9 +5,8 @@
     var equipoList = ViewData["Equipos"] as List<Equipo>;
 }
 
-<h1>Create</h1>
+<h1>Fichar Jugador</h1>
 
-<h4>Jugador</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -28,7 +27,7 @@
                 <input asp-for="Edad" class="form-control" />
                 <span asp-validation-for="Edad" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="overflow-y:auto !important; max-height:200px !important;">
                 <label asp-for="EquiposIds" class="control-label">Equipos</label>
                 @if (equipoList != null && equipoList.Count > 0)
                 {
@@ -48,14 +47,14 @@
                 }
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Fichar" class="btn btn-dark" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="text-dark cursor-pointer">Volver</a>
 </div>
 
 @section Scripts {
