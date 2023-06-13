@@ -1,0 +1,70 @@
+@using EquiposDeFutbol.ViewModels;
+@model JugadorViewModel;
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Fichajes de jugadores</h1>
+
+<hr/>
+<span class="mt-5" style="max-width:300px;">
+    En esta sección se podra fichar jugadores para cualquier equipo que este creado en el sistema. Tambien hay un historial de jugadores que ya fueron creados.
+    Los jugadores pueden ser creados para uno o varios equipos. Un ejemplo es el caso que este creada una seleccion y un club que un mismo jugador pertenezca.
+    O tambien se puede asociar varios clubes a un jugador donde se puede ver el historial del jugador de los equipos donde paso.
+</span>
+<hr/>
+<button class="btn btn-dark" style="position:absolute;right:40px;top:42%;">
+    <a asp-action="Create" class="text-white">Fichar Jugador Nuevo</a>
+</button>
+
+
+<div style="position:absolute;left:40px;top:39%;">
+<button class="btn btn-dark" id="toggleButton" onclick="toggleList()"> Mostrar Jugadores Fichados </button>
+
+<table class="table table-dark mt-2" id="dataList" style="display:none; width:100%;">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Jugadores[0].Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Jugadores[0].Equipos)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Jugadores) {
+       <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @string.Join(", ", item.Equipos.Select(n => n.Nombre))
+        </td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@item.JugadorId">Edit</a> |
+            <a asp-action="Delete" asp-route-id="@item.JugadorId">Delete</a>
+        </td>
+    </tr>
+}
+    </tbody>
+</table>
+
+</div>
+
+
+
+
+<script>
+    function toggleList() {
+        var dataList = document.getElementById("dataList");
+        if (dataList.style.display === "none") {
+            dataList.style.display = "block";
+        } else {
+            dataList.style.display = "none";
+        }
+    }
+</script>

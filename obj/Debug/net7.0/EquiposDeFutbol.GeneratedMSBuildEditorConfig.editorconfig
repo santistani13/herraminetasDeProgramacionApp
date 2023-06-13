@@ -48,6 +48,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/santi/ISTEA/Herramientas de programacion/herraminetasDeProgramacionApp/Views/Jugador/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSnVnYWRvclxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/santi/ISTEA/Herramientas de programacion/herraminetasDeProgramacionApp/Views/Jugador/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSnVnYWRvclxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/santi/ISTEA/Herramientas de programacion/herraminetasDeProgramacionApp/Views/Jugador/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSnVnYWRvclxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/santi/ISTEA/Herramientas de programacion/herraminetasDeProgramacionApp/Views/Jugador/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSnVnYWRvclxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/santi/ISTEA/Herramientas de programacion/herraminetasDeProgramacionApp/Views/Jugador/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSnVnYWRvclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/santi/ISTEA/Herramientas de programacion/herraminetasDeProgramacionApp/Views/Liga/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlnYVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

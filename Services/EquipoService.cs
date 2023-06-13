@@ -43,6 +43,14 @@ public class EquipoService : IEquipoService
             return equipos;
     }
 
+    public List<Equipo> GetAll()
+    {
+        var query = from equipo in _context.Equipo select equipo;
+        
+        return query.ToList();
+        
+    }
+
     public Equipo? GetById(int id)
     {
       

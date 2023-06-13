@@ -25,6 +25,9 @@
                         </li>
                          @if (User.Identity != null && User.IsInRole("Administrador"))
                             {
+                                 <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Jugador" asp-action="Index">Jugador</a>
+                              </li>
                               <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index">Usuarios</a>
                               </li>
